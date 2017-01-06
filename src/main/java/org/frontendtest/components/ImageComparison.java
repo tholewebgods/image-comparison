@@ -161,8 +161,10 @@ public class ImageComparison {
 			out = new FileImageOutputStream(file);
 		} catch (FileNotFoundException io) {
 			System.out.println("File Not Found when opening the output stream: " + io);
+			return;
 		} catch (IOException e) {
 			System.out.println("IOException when opening the output stream:" + e);
+			return;
 		}
 		
 		
