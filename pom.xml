@@ -1,0 +1,29 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.frontendtest</groupId>
+	<artifactId>image-comparison</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0</version>
+	<name>image-comparison</name>
+	<developers>
+		<developer>
+			<name>Nils Schütte</name>
+			<url>http://www.frontendtest.org/blog/screenshot-comparison/</url>
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>MIT</name>
+			<url>https://opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
+	<url>http://www.frontendtest.org/blog/screenshot-comparison/</url>
+	<dependencies>
+		<dependency>
+			<groupId>net.coobird</groupId>
+			<artifactId>thumbnailator</artifactId>
+			<version>0.4.5</version>
+		</dependency>
+	</dependencies>
+</project>
