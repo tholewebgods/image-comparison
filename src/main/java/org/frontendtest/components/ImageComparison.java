@@ -5,8 +5,10 @@ import java.util.HashMap;
 import java.awt.*;
 import java.awt.image.*;
 import javax.imageio.ImageIO;
+import javax.imageio.stream.FileImageOutputStream;
+import javax.imageio.stream.ImageOutputStream;
+
 import net.coobird.thumbnailator.Thumbnails;
-import com.sun.image.codec.jpeg.*;
 
 public class ImageComparison {
 	private BufferedImage imgOut = null;
@@ -151,21 +153,23 @@ public class ImageComparison {
 
 	private void saveImage(Image img, String filename) {
 		BufferedImage bi = imageToBufferedImage(img);
-		FileOutputStream out = null;
+		
+		File file = new File(filename);
+		ImageOutputStream out = null;
+		
 		try {
-			out = new FileOutputStream(filename);
-		} catch (java.io.FileNotFoundException io) {
-			System.out.println("File Not Found");
+			out = new FileImageOutputStream(file);
+		} catch (FileNotFoundException io) {
+			System.out.println("File Not Found when opening the output stream: " + io);
+		} catch (IOException e) {
+			System.out.println("IOException when opening the output stream:" + e);
 		}
-		JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
-		JPEGEncodeParam param = encoder.getDefaultJPEGEncodeParam(bi);
-		param.setQuality(0.8f, false);
-		encoder.setJPEGEncodeParam(param);
+		
+		
 		try {
-			encoder.encode(bi);
-			out.close();
+			ImageIO.write(bi, "jpeg", out);
 		} catch (java.io.IOException io) {
-			System.out.println("IOException");
+			System.out.println("IOException while encoding the image: " + io);
 		}
 	}
 }
