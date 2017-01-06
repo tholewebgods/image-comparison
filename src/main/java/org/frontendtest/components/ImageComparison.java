@@ -157,6 +157,16 @@ public class ImageComparison {
 		File file = new File(filename);
 		ImageOutputStream out = null;
 		
+		if (!file.getParentFile().exists()) {
+			System.out.println("The parent directory of " + filename + " does not exist!");
+			return;
+		}
+		
+		if (!file.getParentFile().isDirectory()) {
+			System.out.println("The parent path of " + filename + " is not a directory!");
+			return;
+		}
+		
 		try {
 			out = new FileImageOutputStream(file);
 		} catch (FileNotFoundException io) {
